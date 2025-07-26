@@ -29,26 +29,21 @@ jobs:
 
     - name: Add opera-proxy package
       run: |
-        cp -r sdk/package/opera-proxy sdk/package/opera-proxy
+        cp -r package/opera-proxy sdk/package/
         chmod +x sdk/package/opera-proxy/update.sh
-        chmod +x sdk/files/etc/init.d/opera-proxy
+        chmod +x sdk/package/opera-proxy/files/etc/init.d/opera-proxy
         cd sdk/package/opera-proxy
         ./update.sh
-
-    - name: Prepare feeds and config
-      run: |
-        cd sdk
-        ./scripts/feeds update -a
-        ./scripts/feeds install -a
-        make defconfig
 
     - name: Build opera-proxy
       run: |
         cd sdk
+        echo "CONFIG_PACKAGE_opera-proxy=y" >> .config
+        make defconfig
         make package/opera-proxy/compile V=s -j$(nproc)
 
     - name: Upload .ipk artifact
       uses: actions/upload-artifact@v4
       with:
         name: opera-proxy
-        path: sdk/bin/packages/mipsel_24kc/base/opera-proxy_*.ipk
+        path: sdk/bin/packages/*/base/opera-proxy_*.ipk
