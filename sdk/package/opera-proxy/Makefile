@@ -1,0 +1,32 @@
+include $(TOPDIR)/rules.mk
+
+PKG_NAME:=opera-proxy
+PKG_VERSION:=1.9.0
+PKG_RELEASE:=1
+PKG_SOURCE_PROTO:=git
+PKG_SOURCE_URL:=https://github.com/Snawoot/opera-proxy.git
+PKG_SOURCE_VERSION:=main
+PKG_SOURCE_DATE:=2025-07-26
+PKG_LICENSE:=MIT
+PKG_MAINTAINER:=Snawoot
+
+GO_PKG:=github.com/Snawoot/opera-proxy
+GO_PKG_BUILD_BINARIES:=opera-proxy
+
+include $(INCLUDE_DIR)/package.mk
+include $(TOPDIR)/feeds/packages/lang/golang/golang-package.mk
+
+define Package/opera-proxy
+  SECTION:=net
+  CATEGORY:=Network
+  TITLE:=Opera Proxy client (Go build)
+  URL:=https://github.com/Snawoot/opera-proxy
+  DEPENDS:=+ca-certificates +libpthread
+endef
+
+define Package/opera-proxy/install
+    $(INSTALL_DIR) $(1)/usr/bin
+    $(INSTALL_BIN) $(GO_PKG_BUILD_BINARIES_DIR)/opera-proxy $(1)/usr/bin/
+endef
+
+$(eval $(call BuildPackage,opera-proxy))
