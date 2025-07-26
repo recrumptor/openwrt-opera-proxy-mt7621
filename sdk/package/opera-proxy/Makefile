@@ -6,7 +6,7 @@ PKG_RELEASE:=1
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/Snawoot/opera-proxy.git
 PKG_SOURCE_VERSION:=main
-PKG_SOURCE_DATE:=2025-07-26
+# PKG_SOURCE_DATE:=2025-07-26
 PKG_LICENSE:=MIT
 PKG_MAINTAINER:=Snawoot
 
@@ -25,8 +25,14 @@ define Package/opera-proxy
 endef
 
 define Package/opera-proxy/install
-    $(INSTALL_DIR) $(1)/usr/bin
-    $(INSTALL_BIN) $(GO_PKG_BUILD_BINARIES_DIR)/opera-proxy $(1)/usr/bin/
+      $(INSTALL_DIR) $(1)/usr/bin
+      $(INSTALL_BIN) $(GO_PKG_BUILD_BINARIES_DIR)/opera-proxy $(1)/usr/bin/
+
+      $(INSTALL_DIR) $(1)/etc/init.d
+      $(INSTALL_BIN) ./files/etc/init.d/opera-proxy $(1)/etc/init.d/
+
+      $(INSTALL_DIR) $(1)/etc/config
+      $(INSTALL_CONF) ./files/etc/config/opera-proxy $(1)/etc/config/
 endef
 
 $(eval $(call BuildPackage,opera-proxy))
