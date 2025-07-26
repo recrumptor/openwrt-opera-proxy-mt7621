@@ -47,13 +47,14 @@ jobs:
         source venv/bin/activate
         pip install --upgrade pip setuptools wheel
 
+    - name: Enable opera-proxy package
+      run: echo "CONFIG_PACKAGE_opera-proxy=y" >> sdk/.config
+
     - name: Build opera-proxy package
       run: |
         cd sdk
-        echo "CONFIG_PACKAGE_opera-proxy=y" >> .config
-        make defconfig
         make package/opera-proxy/compile V=s -j$(nproc)
-
+        
     - name: Upload .ipk artifact
       uses: actions/upload-artifact@v4
       with:
