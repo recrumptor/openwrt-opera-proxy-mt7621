@@ -1,1 +1,1 @@
-# -penwrt-opera-proxy-mt7621
+# оpenwrt-opera-proxy-mt7621
