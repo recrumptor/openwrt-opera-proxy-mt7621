@@ -41,18 +41,18 @@ jobs:
         cp sdk/files/etc/config/opera-proxy sdk/package/opera-proxy/files/etc/config/opera-proxy
         chmod +x sdk/package/opera-proxy/files/etc/init.d/opera-proxy
         
-        - name: Debug package contents
-        run: |
-          echo "Содержимое sdk/package/opera-proxy:"
-          ls -la sdk/package/opera-proxy
+    - name: Debug package contents
+      run: |
+        echo "Содержимое sdk/package/opera-proxy:"
+        ls -la sdk/package/opera-proxy
 
-          echo ""
-          echo "Содержимое sdk/package/opera-proxy/files/etc/init.d:"
-          ls -la sdk/package/opera-proxy/files/etc/init.d
+        echo ""
+        echo "Содержимое sdk/package/opera-proxy/files/etc/init.d:"
+        ls -la sdk/package/opera-proxy/files/etc/init.d
 
-          echo ""
-          echo "Файл Makefile:"
-          cat sdk/package/opera-proxy/Makefile || echo "Makefile отсутствует!"
+        echo ""
+        echo "Файл Makefile:"
+        cat sdk/package/opera-proxy/Makefile || echo "Makefile отсутствует!"
 
 
     - name: Setup Python venv
