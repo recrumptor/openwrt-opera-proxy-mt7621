@@ -33,10 +33,12 @@ jobs:
         mkdir -p sdk/package/opera-proxy/files/etc/init.d
         mkdir -p sdk/package/opera-proxy/files/etc/config
         cp sdk/Makefile.sdk sdk/package/opera-proxy/Makefile
-        # cp sdk/Config.in sdk/package/opera-proxy/Config.in
+        cp sdk/Config.in sdk/package/opera-proxy/Config.in
         cp sdk/files/etc/init.d/opera-proxy sdk/package/opera-proxy/files/etc/init.d/opera-proxy
         cp sdk/files/etc/config/opera-proxy sdk/package/opera-proxy/files/etc/config/opera-proxy
         chmod +x sdk/package/opera-proxy/files/etc/init.d/opera-proxy
+        grep -qxF 'source "package/opera-proxy/Config.in"' sdk/package/Config.in || \
+        echo 'source "package/opera-proxy/Config.in"' >> sdk/package/Config.in
         
     - name: Debug package contents
       run: |
