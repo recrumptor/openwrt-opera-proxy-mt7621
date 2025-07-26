@@ -1,1 +1,27 @@
+# Сборочные артефакты
+/bin/
+/build_dir/
+/staging_dir/
+/tmp/
 
+# Пакеты
+*.ipk
+*.patch
+
+# Feeds и конфигурация
+feeds.log
+.config
+.config.old
+
+# Временные файлы и резервные копии
+*.swp
+*.swo
+*.bak
+*.log
+
+# Python (если используешь скрипты)
+__pycache__/
+*.py[cod]
+
+# Оставляем нужные пустые директории
+!.gitkeep
