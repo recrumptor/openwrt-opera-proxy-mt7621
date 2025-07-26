@@ -27,10 +27,7 @@ jobs:
         SDK_DIR=$(find . -maxdepth 1 -type d -name "openwrt-sdk-24.10.2-*" | head -n1)
         mv "$SDK_DIR" sdk
 
-    - name: Clone opera-proxy upstream
-      run: |
-        git clone https://github.com/Snawoot/opera-proxy.git sdk/package/opera-proxy
-
+    
     - name: Inject OpenWrt metadata
       run: |
         mkdir -p sdk/package/opera-proxy/files/etc/init.d
