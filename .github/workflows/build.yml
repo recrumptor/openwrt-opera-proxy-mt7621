@@ -10,10 +10,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout this repo
+    - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Install build dependencies
+    - name: Install dependencies
       run: |
         sudo apt update
         sudo apt install -y build-essential clang flex bison g++ gawk \
@@ -27,22 +27,25 @@ jobs:
         SDK_DIR=$(find . -maxdepth 1 -type d -name "openwrt-sdk-24.10.2-*" | head -n1)
         mv "$SDK_DIR" sdk
 
-    - name: Clone opera-proxy into SDK
+    - name: Clone opera-proxy upstream
       run: |
         git clone https://github.com/Snawoot/opera-proxy.git sdk/package/opera-proxy
 
-    - name: Setup Python venv for opera-proxy
+    - name: Inject OpenWrt metadata
+      run: |
+        mkdir -p sdk/package/opera-proxy/files/etc/init.d
+        mkdir -p sdk/package/opera-proxy/files/etc/config
+        cp sdk/Makefile.sdk sdk/package/opera-proxy/Makefile
+        cp sdk/Config.in sdk/package/opera-proxy/Config.in
+        cp sdk/files/etc/init.d/opera-proxy sdk/package/opera-proxy/files/etc/init.d/opera-proxy
+        cp sdk/files/etc/config/opera-proxy sdk/package/opera-proxy/files/etc/config/opera-proxy
+        chmod +x sdk/package/opera-proxy/files/etc/init.d/opera-proxy
+
+    - name: Setup Python venv
       run: |
         python3 -m venv venv
         source venv/bin/activate
         pip install --upgrade pip setuptools wheel
-
-    - name: Prepare opera-proxy
-      run: |
-        chmod +x sdk/package/opera-proxy/update.sh
-        chmod +x sdk/package/opera-proxy/files/etc/init.d/opera-proxy
-        cd sdk/package/opera-proxy
-        ./update.sh
 
     - name: Build opera-proxy package
       run: |
@@ -56,4 +59,3 @@ jobs:
       with:
         name: opera-proxy
         path: sdk/bin/packages/*/base/opera-proxy_*.ipk
-
