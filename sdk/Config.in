@@ -1,6 +1,0 @@
-config PACKAGE_opera-proxy
-    prompt "Opera Proxy"
-    tristate
-    default n
-    help
-      Lightweight Opera proxy written in Go
