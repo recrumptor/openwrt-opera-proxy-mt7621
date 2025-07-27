@@ -8,6 +8,7 @@ PKG_SOURCE_URL:=https://github.com/Snawoot/opera-proxy/archive/refs/tags/v$(PKG_
 PKG_SOURCE_VERSION:=v$(PKG_VERSION)
 PKG_SOURCE_SUBDIR:=opera-proxy-$(PKG_VERSION)
 PKG_SOURCE_FILENAME:=opera-proxy-$(PKG_VERSION).tar.gz
+PKG_HASH:=SKIP
 # PKG_SOURCE_DATE:=2025-07-26
 PKG_LICENSE:=MIT
 PKG_MAINTAINER:=Snawoot
