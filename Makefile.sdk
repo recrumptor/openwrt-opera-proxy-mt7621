@@ -25,14 +25,14 @@ define Package/opera-proxy
 endef
 
 define Package/opera-proxy/install
-  $(INSTALL_DIR) $(1)/usr/bin
-  $(INSTALL_BIN) $(GO_PKG_BUILD_BINARIES_DIR)/opera-proxy $(1)/usr/bin/
-  
-  $(INSTALL_DIR) $(1)/etc/init.d
-  $(INSTALL_BIN) ./files/etc/init.d/opera-proxy $(1)/etc/init.d/
-  
-  $(INSTALL_DIR) $(1)/etc/config
-  $(INSTALL_CONF) ./files/etc/config/opera-proxy $(1)/etc/config/
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(INSTALL_BIN) $(GO_PKG_BUILD_BINARIES_DIR)/opera-proxy $(1)/usr/bin/
+
+	$(INSTALL_DIR) $(1)/etc/init.d
+	$(INSTALL_BIN) ./files/etc/init.d/opera-proxy $(1)/etc/init.d/
+
+	$(INSTALL_DIR) $(1)/etc/config
+	$(INSTALL_CONF) ./files/etc/config/opera-proxy $(1)/etc/config/
 endef
 
 
