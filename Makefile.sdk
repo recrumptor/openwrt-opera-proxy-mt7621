@@ -20,7 +20,6 @@ PKG_MAINTAINER:=Snawoot
 
 GO_PKG:=github.com/Snawoot/opera-proxy
 GO_PKG_BUILD_BINARIES:=opera-proxy
-GO_PKG_FLAGS += GOOS=linux GOARCH=mipsle CGO_ENABLED=0
 
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/packages/lang/golang/golang-package.mk
