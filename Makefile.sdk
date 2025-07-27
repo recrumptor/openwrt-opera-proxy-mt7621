@@ -3,11 +3,11 @@ include $(TOPDIR)/rules.mk
 PKG_NAME:=opera-proxy
 PKG_VERSION:=1.9.0
 PKG_RELEASE:=1
-PKG_SOURCE:=opera-proxy-$(PKG_VERSION).tar.gz
+PKG_SOURCE:=v$(PKG_VERSION).tar.gz
 
 # Указываем ПРЯМОЙ URL к файлу архива.
 # Он уже содержит имя файла (.tar.gz) в конце.
-PKG_SOURCE_URL:=https://github.com/Snawoot/opera-proxy/archive/refs/tags/v$(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=https://github.com/Snawoot/opera-proxy/archive/refs/tags/
 
 # Имя подкаталога, который создается после распаковки архива GitHub
 # (для архивов тегов GitHub это обычно "имя_репозитория-имя_тега_без_v")
