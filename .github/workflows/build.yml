@@ -51,6 +51,13 @@ jobs:
         touch .config
         echo "CONFIG_PACKAGE_opera-proxy=y" >> .config
         make defconfig
+        
+    - name: Patch opera-proxy to disable osutil
+      run: |
+        find openwrt-sdk/build_dir/target-* -type f -name main.go | while read f; do
+          sed -i '/github.com\/AdguardTeam\/golibs\/osutil/d' "$f"
+          sed -i '/osutil\./d' "$f"
+        done
 
     - name: Build opera-proxy package
       run: |
