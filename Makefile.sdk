@@ -3,9 +3,11 @@ include $(TOPDIR)/rules.mk
 PKG_NAME:=opera-proxy
 PKG_VERSION:=1.9.0
 PKG_RELEASE:=1
-PKG_SOURCE_PROTO:=git
-PKG_SOURCE_URL:=https://github.com/Snawoot/opera-proxy.git
-PKG_SOURCE_BRANCH:=master
+PKG_SOURCE:=opera-proxy-$(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=https://github.com/Snawoot/opera-proxy/archive/refs/tags/v$(PKG_VERSION).tar.gz
+PKG_SOURCE_VERSION:=v$(PKG_VERSION)
+PKG_SOURCE_SUBDIR:=opera-proxy-$(PKG_VERSION)
+PKG_SOURCE_FILENAME:=opera-proxy-$(PKG_VERSION).tar.gz
 # PKG_SOURCE_DATE:=2025-07-26
 PKG_LICENSE:=MIT
 PKG_MAINTAINER:=Snawoot
