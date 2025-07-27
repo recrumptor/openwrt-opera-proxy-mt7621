@@ -20,10 +20,8 @@ PKG_MAINTAINER:=Snawoot
 
 GO_PKG:=github.com/Snawoot/opera-proxy
 GO_PKG_BUILD_BINARIES:=opera-proxy
-# Явно указываем Go-компилятору использовать hardfloat для MIPSLE
-ifeq ($(GOARCH),mipsle)
-    GOMIPS:=hardfloat
-endif
+# Отключаем CGO, чтобы избежать проблем с кросс-компиляцией на MIPS.
+GO_BUILD_ARGS += -tags netgo osusergo
 
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/packages/lang/golang/golang-package.mk
