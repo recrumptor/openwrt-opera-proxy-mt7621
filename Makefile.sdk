@@ -3,18 +3,15 @@ include $(TOPDIR)/rules.mk
 PKG_NAME:=opera-proxy
 PKG_VERSION:=1.9.0
 PKG_RELEASE:=1
+PKG_SOURCE:=opera-proxy-$(PKG_VERSION).tar.gz
+
 # Указываем ПРЯМОЙ URL к файлу архива.
-# ВАЖНО: он уже содержит имя файла (.tar.gz) в конце.
+# Он уже содержит имя файла (.tar.gz) в конце.
 PKG_SOURCE_URL:=https://github.com/Snawoot/opera-proxy/archive/refs/tags/v$(PKG_VERSION).tar.gz
 
 # Имя подкаталога, который создается после распаковки архива GitHub
 # (для архивов тегов GitHub это обычно "имя_репозитория-имя_тега_без_v")
 PKG_SOURCE_SUBDIR:=opera-proxy-$(PKG_VERSION)
-
-# Эти переменные НЕ НУЖНЫ, если PKG_SOURCE_URL уже является полным путём к файлу.
-# PKG_SOURCE:=opera-proxy-$(PKG_VERSION).tar.gz # <--- УДАЛИТЕ ЭТУ СТРОКУ
-# PKG_SOURCE_FILENAME:=opera-proxy-$(PKG_VERSION).tar.gz # <--- УДАЛИТЕ ЭТУ СТРОКУ
-
 # Используем актуальный хеш
 PKG_HASH:=34c0326f34e6d42658c4f9f7d079633e680a97c9c0f91e92d77d7398108427f7
 PKG_SOURCE_DATE:=2025-04-12
